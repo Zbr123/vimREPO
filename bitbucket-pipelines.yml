@@ -1,0 +1,20 @@
+# QA KATALON SERVER BUILD AND RUN TESTS
+image: katalonstudio/katalon:STUDIO-3090
+
+pipelines:
+  default:
+      - step:
+          name: 'linux stuff'
+          script: 
+            - apt update -y
+            - apt install git -y
+            - cat /katalon/version
+      - step:
+          name: 'pull tests'
+          script:
+            - git clone $QATOKEN
+            - ls -al
+      - step:
+          name: 'run tests'
+          script:
+            - katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Tests"

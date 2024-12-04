@@ -1,0 +1,61 @@
+VM-3500 BDD Test Cases
+
+Scenario:	Verify that the user is able to see the previously submitted assessment in the "Previous Lawton-Brody ADL Assessment" panel at bottom of page.
+	Given   [Main Page] User go the web portal and navigate to the login page
+    When    [Web Login Page] User enters email srijan-admin@srijan.net
+    And     [Web Login Page] User enters password Srijan@12345
+    And     [Web Login Page] User clicks on Log In button
+    Then    [Web Home Page] User should see Home tab in heading
+    When    [Web Admin Page] User clicks on Home button from admin tab
+    Then    [Web Home Page] User should see the Welcome heading
+    When    [Web Home Page] User enters in the senior list search textbox Zubair
+    And     [Web Home Page] User clicks on the top senior Zubair Automation03 after search
+    Then    [Web Senior Dashboard Page] User should see the Dashboard heading
+    And     [Web Senior Dashboard Page] User clicks on Assessments tab
+    Then    [Web Holistic Assessment Page] User should see the Holistic Assessment heading
+    When    [Web Holistic Assessment Page] User clicks on ADL Assessment side-tab
+    And     [Web Holistic Assessment Page] User clicks on Lawton-Brody ADL side-tab
+    Then    [Web Lawton-Brody ADL Page] User should see the Lawton-Brody ADL heading
+	And		At least one or more assessments have been previously submitted
+	When	User scrolls to the bottom of the page to the "Previous Lawton-Brody ADL Assessment" panel
+	Then	User should be able to see the previously submitted assessments in rows with Date, Time, Total Score, Agent Name and Action columns
+	
+Scenario:	Verify that the user is able to view the previously submitted assessments using the view button.
+	Given: User is logged into a CA account
+	And: User is present on the Lawton-Brody ADL Assessment page
+	And: At least one or more assessments have been previously submitted
+	When: Navigating the "Previous Lawton-Brody ADL Assessment" panel at bottom user clicks the View button of any submitted assessment
+	Then: User should be able to view the assessment in full detail with submitted date and time at top right corner of page
+	And: User should be in view only mode
+	And: User should not be able to edit any response in the submitted assessment.
+	
+Scenario:	Verify that the user should see a Close button once in view only mode
+	Given: User is logged into a CA account
+	And: User is present on the Lawton-Brody ADL Assessment page
+	And: At least one or more assessments have been previously submitted
+	When: Navigating the "Previous Lawton-Brody ADL Assessment" panel at bottom user clicks the view button of any submitted assessment
+	Then: User should be able to see a Close button instead of Reset, Save and Submit button.
+
+Scenario:	Verify that once user is in view mode the view button for that assessment should be disabled.
+	Given: User is logged into a CA account
+	And: User is present on the Lawton-Brody ADL Assessment page
+	And: At least one or more assessments have been previously submitted
+	When: Navigating the "Previous Lawton-Brody ADL Assessment" panel at bottom user clicks the view button of any submitted assessment
+	Then: User should enter view mode
+	And: The view button for that particular assessment should be disabled until user clicks on Close button.
+
+Scenario:	Verify that when the user clicks the Close button while viewing an assessment he should exit view mode and the latest saved assessment is displayed.
+	Given: User is logged into a CA account
+	And: User is present on the Lawton-Brody ADL Assessment page
+	And: User is viewing a submitted assessment
+	When: User clicks on the Close button
+	Then: User should exit view only mode
+	And: The latest saved or in-progress assessment with its responses should be displayed.
+	
+Scenario:	Verify that the user should see a total of 6 submissions in a single pagination.
+	Given: User is logged into a CA account
+	And: User is present on the Lawton-Brody ADL Assessment page
+	And: At least 6 or more assessments have been previously submitted
+	When: User scrolls down to the "Previous Lawton-Brody ADL Assessment" panel
+	Then: User should see 6 submissions in single pagination
+	And: Older submissions should be in the second pagination.

@@ -1,0 +1,7 @@
+<extent-config>
+    <reportName>Automation Test Report</reportName>
+    <theme>standard</theme>
+    <documentTitle>Test Execution Report</documentTitle>
+    <encoding>utf-8</encoding>
+    <protocol>https</protocol>
+</extent-config>
